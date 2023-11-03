@@ -1,0 +1,118 @@
+baseURL = "https://blog.backtraxe.top/"
+
+languageCode = "zh-CN"
+
+title = "Backtraxe's Blog"
+
+contentDir = "content"
+
+enableEmoji = true
+
+enableGitInfo = true
+
+[build]
+    noJSConfigInAssets = true
+
+[module]
+    [module.hugoVersion]
+        extended = true
+        min      = "v0.100.0"
+    [[module.imports]]
+        path    = "github.com/colinwilson/lotusdocs"
+        disable = false
+    [[module.imports]]
+        path    = "github.com/gohugoio/hugo-mod-bootstrap-scss/v5"
+        disable = false
+
+[markup]
+    [markup.tableOfContents]
+      startLevel = 1
+      endLevel   = 3
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true # https://jdhao.github.io/2019/12/29/hugo_html_not_shown/
+    [markup.goldmark.parser]
+        [markup.goldmark.parser.attribute]
+            block = true
+
+[params]
+    # Google Fonts
+    google_fonts = [
+        ["Inter", "300, 400, 600, 700"],
+        ["Fira Code", "500, 700"]
+    ]
+
+    sans_serif_font = "Inter"     # Default is System font
+    secondary_font  = "Inter"     # Default is System font
+    mono_font       = "Fira Code" # Default is System font
+
+    # 页脚
+    [params.footer]
+        copyright = "© :YEAR: Lotus Labs. Built with [**Lotus Docs**](https://github.com/colinwilson/lotusdocs)"
+        version   = true # include git commit info in footer
+
+    # 社交账号展示
+    [params.social]
+        github = "backtraxe"
+        # twitter = "backtraxe"
+        # instagram = "backtraxe"
+        # rss = true
+
+    [params.docs] # Parameters for the /docs 'template'
+        title           = "Lotus Docs"                        # default html title for documentation pages/sections
+        # pathName        = "docs"                            # path for documentation site | default "docs"
+
+        # themeColor      = "cyan"                            # (optional) - Set theme accent colour. Options include: blue (default), green, red, yellow, emerald, cardinal, magenta, cyan
+
+
+        darkMode = true # 夜间模式
+
+        # 代码高亮
+        prism = true
+        prismTheme = "lotusdocs" # lotusdocs, solarized-light, twilight, lucario
+
+        # git信息
+        repoURL         = "https://github.com/backtraxe/blog"
+        repoBranch      = "main"
+        editPage        = true # 是否展示编辑页面按钮
+        lastMod         = true # 是否展示上次更新时间
+        lastModRelative = true # 上次更新时间是否展示为相对时间
+
+        # 目录
+        toc       = true # 是否展示目录
+        tocMobile = true # 移动端是否展示目录
+        scrollSpy = true # 是否高亮当前所在目录
+
+        # 图标
+        sidebarIcons = false # 侧边栏是否展示图标
+        titleIcon    = true  # enable front matter icon title prefix? default is false
+
+        # 页面导航
+        breadcrumbs  = true # 是否在标题上方展示页面路径
+        navDesc      = true # 是否在前后页面跳转卡片中包含页面描述信息
+        navDescTrunc = 30   # 页面描述信息的截断字符数量
+
+        listDescTrunc   = 100                                 # Number of characters by which to truncate the list card description
+        backToTop       = true                                # enable back-to-top button? default true
+
+        # 页面描述信息
+        descriptions = true # enable front matter descriptions under content title?
+
+        # 链接跳转
+        intLinkTooltip = false # 博客内链接跳转是否展示预览页面描述信息
+        extLinkNewTab  = true  # 外部链接是否在新标签页打开
+
+    [params.flexsearch]
+        enabled             = true
+        # tokenize            = "full"
+        # optimize            = true
+        # cache               = 100
+        # minQueryChar        = 3 # default is 0 (disabled)
+        # maxResult           = 5 # default is 5
+        # searchSectionsIndex = []
+
+[[menu.primary]]
+    name       = "Docs"
+    url        = "/docs/"
+    identifier = "docs"
+    weight     = 1
