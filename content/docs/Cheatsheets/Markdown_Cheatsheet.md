@@ -1,5 +1,5 @@
 ---
-title: "Markdown"
+title: "Markdown Cheatsheet"
 author: "backtraxe"
 date: "2023-11-04T01:58:17+08:00"
 lastmod: "2023-11-04T01:58:17+08:00"
@@ -158,4 +158,10 @@ $$
 
 ## 链接
 
-[Plausible Analytics Guide]({{% relref "/docs/Go/Go基本语法" %}})
+### 外部链接
+
+[Bilibili](https://www.bilibili.com/)
+
+### 内部链接
+
+[Go基本语法]({{% relref "/docs/Go/Go基本语法" %}})

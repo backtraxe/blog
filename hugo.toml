@@ -2,15 +2,19 @@ baseURL = "https://blog.backtraxe.top/"
 
 languageCode = "zh-CN"
 
+# 标题
 title = "Backtraxe's Blog"
 
 contentDir = "content"
 
+# 是否支持表情
 enableEmoji = true
 
+# 是否使用 git 信息
 enableGitInfo = true
 
 [build]
+    # 不在 assets 目录下生成 jsconfig
     noJSConfigInAssets = true
 
 [module]
@@ -30,7 +34,8 @@ enableGitInfo = true
       endLevel   = 3
     [markup.goldmark]
         [markup.goldmark.renderer]
-            unsafe = true # https://jdhao.github.io/2019/12/29/hugo_html_not_shown/
+            # 渲染 html 标签
+            unsafe = true
     [markup.goldmark.parser]
         [markup.goldmark.parser.attribute]
             block = true
@@ -42,30 +47,27 @@ enableGitInfo = true
         ["Fira Code", "500, 700"]
     ]
 
-    sans_serif_font = "Inter"     # Default is System font
-    secondary_font  = "Inter"     # Default is System font
-    mono_font       = "Fira Code" # Default is System font
+    sans_serif_font = "Inter"
+    secondary_font  = "Inter"
+    mono_font       = "Fira Code"
 
     # 页脚
     [params.footer]
         copyright = "© :YEAR: Lotus Labs. Built with [**Lotus Docs**](https://github.com/colinwilson/lotusdocs)"
-        version   = true # include git commit info in footer
+        version   = true
 
     # 社交账号展示
     [params.social]
         github = "backtraxe"
+        rss    = true
         # twitter = "backtraxe"
         # instagram = "backtraxe"
-        # rss = true
 
-    [params.docs] # Parameters for the /docs 'template'
-        title           = "Lotus Docs"                        # default html title for documentation pages/sections
-        # pathName        = "docs"                            # path for documentation site | default "docs"
-
-        # themeColor      = "cyan"                            # (optional) - Set theme accent colour. Options include: blue (default), green, red, yellow, emerald, cardinal, magenta, cyan
-
-
-        darkMode = true # 夜间模式
+    [params.docs]
+        title      = ""
+        pathName   = "docs"
+        themeColor = "blue" # blue (default), green, red, yellow, emerald, cardinal, magenta, cyan
+        darkMode   = true   # 夜间模式
 
         # 代码高亮
         prism = true
@@ -84,35 +86,38 @@ enableGitInfo = true
         scrollSpy = true # 是否高亮当前所在目录
 
         # 图标
-        sidebarIcons = false # 侧边栏是否展示图标
-        titleIcon    = true  # enable front matter icon title prefix? default is false
+        sidebarIcons = true # 侧边栏是否展示图标
+        titleIcon    = true #
 
         # 页面导航
         breadcrumbs  = true # 是否在标题上方展示页面路径
-        navDesc      = true # 是否在前后页面跳转卡片中包含页面描述信息
-        navDescTrunc = 30   # 页面描述信息的截断字符数量
+        navDesc      = true # 是否在上一篇/下一篇跳转卡片中包含页面描述信息
+        navDescTrunc = 30   # 上一篇/下一篇跳转卡片中页面描述信息的截断字符数量
 
-        listDescTrunc   = 100                                 # Number of characters by which to truncate the list card description
-        backToTop       = true                                # enable back-to-top button? default true
+        listDescTrunc   = 100  # 博客卡片展示描述信息的截断字符数量
+        backToTop       = true # 回到顶部按钮
 
-        # 页面描述信息
-        descriptions = true # enable front matter descriptions under content title?
+        descriptions = true # 标题下方展示页面描述信息
 
         # 链接跳转
-        intLinkTooltip = false # 博客内链接跳转是否展示预览页面描述信息
-        extLinkNewTab  = true  # 外部链接是否在新标签页打开
+        intLinkTooltip = true # 博客内链接跳转是否展示预览页面描述信息
+        extLinkNewTab  = true # 外部链接是否在新标签页打开
 
     [params.flexsearch]
-        enabled             = true
-        # tokenize            = "full"
-        # optimize            = true
-        # cache               = 100
-        # minQueryChar        = 3 # default is 0 (disabled)
-        # maxResult           = 5 # default is 5
-        # searchSectionsIndex = []
+        enabled = true
 
+    # [params.docsearch]
+    #     appID     = "O2QIOCBDAK"
+    #     apiKey    = "fdc60eee76a72a35d739b54521498b77"
+    #     indexName = "dev_lotusdocs.dev"
+
+    # 用户反馈
+    [params.feedback]
+        enabled = false
+
+# 右上角跳转列表
 [[menu.primary]]
-    name       = "Docs"
-    url        = "/docs/"
-    identifier = "docs"
+    name       = "博客"   # 右上角展示名称
+    url        = "/docs" # 跳转目录
+    identifier = "博客"
     weight     = 1
