@@ -20,18 +20,22 @@ jobs:
         with:
           submodules: true  # clone 主题
           fetch-depth: 0
+
+      - name: 2.Setup Go environment
+        uses: actions/setup-go@v4
+        with:
           go-version: 1.21.3
 
-      - name: 2.Hugo setup
+      - name: 3.Hugo setup
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
           extended: true
 
-      - name: 3.Build
+      - name: 4.Build
         run: hugo --minify
 
-      - name: 4.Deploy
+      - name: 5.Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
