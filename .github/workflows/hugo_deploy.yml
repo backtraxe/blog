@@ -20,6 +20,7 @@ jobs:
         with:
           submodules: true  # clone 主题
           fetch-depth: 0
+          go-version: 1.21.3
 
       - name: 2.Hugo setup
         uses: peaceiris/actions-hugo@v2
