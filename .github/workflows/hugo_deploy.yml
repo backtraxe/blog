@@ -10,6 +10,21 @@ on:
   # 手动启动
   workflow_dispatch:
 
+# 权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 并发
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +33,7 @@ jobs:
       - name: 1.Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true  # clone 主题
+          submodules: recursive  # clone 主题
           fetch-depth: 0
 
       - name: 2.Setup Go environment
@@ -26,18 +41,47 @@ jobs:
         with:
           go-version: 1.21.3
 
-      - name: 3.Hugo setup
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: latest
-          extended: true
+      - name: 3.Install Hugo CLI
+        run: |
+          HUGO_VERSION=$(curl -sI 'https://github.com/gohugoio/hugo/releases/latest' | grep 'https' | awk -F 'https://github.com/gohugoio/hugo/releases/tag/v' '{print $2}')
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v$HUGO_VERSION/hugo_extended_$HUGO_VERSION_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
-      - name: 4.Build
-        run: hugo --minify
+      - name: 4.Install Dart Sass
+        run: sudo snap install dart-sass
 
-      - name: 5.Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - name: 5.Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+
+      - name: 6.Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+
+      - name: 7.Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: 8.Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: site
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+      - name: 9.Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
