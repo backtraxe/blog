@@ -71,7 +71,7 @@ enableGitInfo = true
 
         # 代码高亮
         prism = true
-        prismTheme = "lotusdocs" # lotusdocs, solarized-light, twilight, lucario
+        prismTheme = "solarized-light" # lotusdocs, solarized-light, twilight, lucario
 
         # git信息
         repoURL         = "https://github.com/backtraxe/blog"
