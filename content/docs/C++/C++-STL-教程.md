@@ -12,9 +12,9 @@ toc: true
 STL 包含以下四个组件：
 
 1. 算法（Algorithms）：头文件`<algorithm>`定义了一组函数，作用于容器，并为容器中的内容提供各种操作方法。
-1. 容器（Containers）：用来管理某一类对象的集合。C++ 提供了各种不同类型的容器，如 deque、list、vector、map、set、bitset 等。
-1. 函数（Functions）：
-1. 迭代器（Iterators）：遍历容器。
+2. 容器（Containers）：存储数据。
+3. 函数（Functions）：
+4. 迭代器（Iterators）：遍历容器。
 
 ## vector
 
