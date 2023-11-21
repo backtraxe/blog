@@ -4,7 +4,7 @@ author: "backtraxe"
 date: "2023-11-04T01:58:17+08:00"
 lastmod: "2023-11-04T01:58:17+08:00"
 description: ""
-tags: ["test"]
+tags: []
 icon: "article"
 weight: 999
 draft: false

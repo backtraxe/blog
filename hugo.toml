@@ -71,7 +71,7 @@ enableGitInfo = true
 
         # 代码高亮
         prism = true
-        prismTheme = "lotusdocs" # lotusdocs, solarized-light, twilight, lucario
+        prismTheme = "solarized-light" # lotusdocs, solarized-light, twilight, lucario
 
         # git信息
         repoURL         = "https://github.com/backtraxe/blog"
@@ -103,13 +103,13 @@ enableGitInfo = true
         intLinkTooltip = true # 博客内链接跳转是否展示预览页面描述信息
         extLinkNewTab  = true # 外部链接是否在新标签页打开
 
-    [params.flexsearch]
-        enabled = true
+    # [params.flexsearch]
+    #     enabled = true
 
-    # [params.docsearch]
-    #     appID     = "O2QIOCBDAK"
-    #     apiKey    = "fdc60eee76a72a35d739b54521498b77"
-    #     indexName = "dev_lotusdocs.dev"
+    [params.docsearch]
+        appID     = "Y8PU3LLOC1"
+        apiKey    = "87c8a76f1d1a4e69d851bfb5dc11e32f"
+        indexName = "backtraxeio"
 
     # 用户反馈
     [params.feedback]
